@@ -18,7 +18,6 @@ class Solution(object):
             else:
                 stack.append(char)
 
-        # If the stack is empty, all the parentheses are valid
         return not stack
 
 
