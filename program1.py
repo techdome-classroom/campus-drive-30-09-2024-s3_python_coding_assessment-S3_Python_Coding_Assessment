@@ -7,7 +7,6 @@ class Solution(object):
         bracket_map = {')': '(', ']': '[', '}': '{'}
         stack = []
         
-        # Iterate through each character in the string
         for char in s:
             # If the character is a closing bracket
             if char in bracket_map:
