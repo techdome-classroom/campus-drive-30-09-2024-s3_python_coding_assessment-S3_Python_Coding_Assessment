@@ -1,47 +1,26 @@
 class Solution(object):
- def isValid(self, s):
+    def isValid(self, s):
         """
         :type s: str
         :rtype: bool
         """
-        bracketsMap = {
-            ')':'(',
-            ']':'[',
-            '}':'{'
-        }
-      
-        if len(s) == 1 or s[0] in bracketsMap:
-            return False
-        openingBrackets = []
-        # Iterating the string
-        for index in range(len(s)):
-            # Current character
-            currentBracket = s[index]
-            if currentBracket not in bracketsMap: 
-                openingBrackets.append(currentBracket)
-                # Moving on to the next character
-                continue
-            else: 
-                matchingBracket = bracketsMap[currentBracket]
-                # Grabbing top bracket from stack
-                if not len(openingBrackets):
+        # Dictionary to map closing brackets to their corresponding opening brackets
+        bracket_map = {')': '(', ']': '[', '}': '{'}
+        stack = []
+        
+        # Iterate through each character in the string
+        for char in s:
+            # If the character is a closing bracket
+            if char in bracket_map:
+                # Check the top of the stack, or set it to a dummy value if stack is empty
+                top_element = stack.pop() if stack else '#'
+                
+                # If the top of the stack does not match the corresponding opening bracket
+                if bracket_map[char] != top_element:
                     return False
-                candidateBracket = openingBrackets.pop()
-                # Comparing the two
-                if matchingBracket != candidateBracket:
-                    return False
-                else: # We have a valid string so far
-                    continue
-        return not len(openingBrackets)
-
-
-
-
-
-
-    
-
-
-
-  
-
+            else:
+                # It's an opening bracket, push it onto the stack
+                stack.append(char)
+        
+        # If the stack is empty, all opening brackets have been closed properly
+        return not stack
