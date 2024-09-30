@@ -12,13 +12,12 @@ class Solution(object):
       
         if len(s) == 1 or s[0] in bracketsMap:
             return False
-        # Have astack to hold the opening brackets
         openingBrackets = []
         # Iterating the string
         for index in range(len(s)):
             # Current character
             currentBracket = s[index]
-            if currentBracket not in bracketsMap: # It's an opening bracket
+            if currentBracket not in bracketsMap: 
                 openingBrackets.append(currentBracket)
                 # Moving on to the next character
                 continue
