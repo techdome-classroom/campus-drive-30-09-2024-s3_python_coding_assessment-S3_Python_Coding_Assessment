@@ -4,14 +4,12 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        # This hashmap maps a closing bracket to an opening one
         bracketsMap = {
             ')':'(',
             ']':'[',
             '}':'{'
         }
-        # Edge case, we cannot start a valid string with an closing
-        # bracket or have it with length 1
+      
         if len(s) == 1 or s[0] in bracketsMap:
             return False
         # Have astack to hold the opening brackets
