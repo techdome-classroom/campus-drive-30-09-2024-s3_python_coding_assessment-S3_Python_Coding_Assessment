@@ -32,7 +32,6 @@ class Solution(object):
                     return False
                 else: # We have a valid string so far
                     continue
-        # Takes care of 2 things at once. If we've iterated the entire string and have a valid string we should return True. But we also make sure that the stack is empty in the case of all '((((('
         return not len(openingBrackets)
 
 
