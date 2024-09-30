@@ -13,7 +13,6 @@ class Solution(object):
             if char in bracket_map:
                 top_element = stack.pop() if stack else '#'
                 
-                # If the top of the stack does not match the corresponding opening bracket
                 if bracket_map[char] != top_element:
                     return False
             else:
@@ -21,4 +20,4 @@ class Solution(object):
                 stack.append(char)
         
         # If the stack is empty, all opening brackets have been closed properly
-        return not stack
+        return not stack
