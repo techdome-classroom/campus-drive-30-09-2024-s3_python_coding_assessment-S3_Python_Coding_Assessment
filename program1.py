@@ -4,20 +4,24 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        # Use two pointers to traverse the string from left to right
-        left = 0
-        right = len(s) - 1
-        
-        # While the two pointers have not crossed each other
-        while left < right:
-            # Check for valid pairs at both ends
-            if (s[left] == '(' and s[right] == ')') or (s[left] == '{' and s[right] == '}') or (s[left] == '[' and s[right] == ']'):
-                left += 1
-                right -= 1
-            else:
-                return False
+        stack = []
+        mapping = {')': '(', ']': '[', '}': '{'}
 
-        return left >= right
+        for char in s:
+            # If the character is a closing bracket
+            if char in mapping:
+                # Pop the top element from the stack if it's not empty, otherwise assign a dummy value '#'
+                top_element = stack.pop() if stack else '#'
+                
+                # The mapping for the closing bracket does not match the top element
+                if mapping[char] != top_element:
+                    return False
+            else:
+                # If it is an opening bracket, push it onto the stack
+                stack.append(char)
+
+        # If the stack is empty, all the parentheses are valid
+        return not stack
 
 
 
