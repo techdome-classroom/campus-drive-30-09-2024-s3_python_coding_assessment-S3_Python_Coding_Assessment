@@ -21,8 +21,7 @@ class Solution(object):
                 openingBrackets.append(currentBracket)
                 # Moving on to the next character
                 continue
-            else: # We have a closing bracket
-                # Matching bracket
+            else: 
                 matchingBracket = bracketsMap[currentBracket]
                 # Grabbing top bracket from stack
                 if not len(openingBrackets):
